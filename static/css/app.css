@@ -1,0 +1,143 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    gap: 100px;
+    max-width: 100%;
+    margin: auto;
+}
+
+.card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: transform 0.3s;
+}
+
+/* .card:hover {
+    transform: scale(1.01);
+} */
+
+.card-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.options {
+    /* display: flex;
+  flex-direction: row;*/
+    gap: 10px;
+}
+
+.checkbox-option {
+    display: flex;
+    align-items: center;
+    background: #fafafa;
+    padding: 10px;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+.checkbox-option:hover {
+    background-color: #e6f7ff;
+}
+
+.checkbox-option input[type="checkbox"] {
+    margin-right: 12px;
+    transform: scale(1.2);
+}
+
+.checkbox-option input[type="checkbox"]:checked+label {
+    background-color: #d4edda;
+    border-radius: 6px;
+    padding: 5px;
+}
+
+label {
+    cursor: pointer;
+    flex: 1;
+}
+
+.weight {
+    font-size: 0.8rem;
+    color: #666;
+    margin-left: 8px;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 20px 0;
+    width: 90%;
+}
+
+td,
+th {
+    border: 1px solid #333;
+    padding: 10px;
+    text-align: center;
+    position: relative;
+}
+
+td.selected {
+    background-color: #b2f7b2;
+}
+
+input[type="checkbox"] {
+    transform: scale(1.5);
+    margin-bottom: 5px;
+}
+
+#chart-container {
+    width: 20%;
+    margin-top: 30px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+.tooltip-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .tooltip-content {
+    visibility: hidden;
+    width: 800px;
+    background-color: #f9f9f9;
+    color: #333;
+    text-align: center;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    position: absolute;
+    z-index: 9999;
+    top: 125%; /* En dessous de l'icône */
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+  }
+  
+  .tooltip-container:hover .tooltip-content {
+    visibility: visible;
+  }
+
+.info-icon {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #4e9bf9;
+}
