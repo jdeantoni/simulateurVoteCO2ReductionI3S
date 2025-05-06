@@ -126,8 +126,8 @@ button {
     position: absolute;
     z-index: 9999;
     top: 125%; /* En dessous de l'icône */
-    left: 50%;
-    transform: translateX(-50%);
+    left: 20%;
+    transform: translateX(-20%);
     box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
   }
   
