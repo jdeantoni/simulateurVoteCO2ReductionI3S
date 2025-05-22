@@ -2,26 +2,55 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Simulateur Vote Carbone</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.1.0/dist/chartjs-plugin-annotation.min.js"></script>
     <link href="{{ url_for('static', filename='css/app.css') }}" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.svg') }}">
   </head>
   <body>
-    <h1>Simulateur d'aide au choix pour le vote des initiatives de réduction du Bilan Gaz Effet de Serre du laboratoire I3S</h1>
-
+  <header class="flex items-center justify-start space-x-4 p-4 bg-gray-100 shadow-md">  <!-- Logo -->
+  <div class="flex items-center space-x-3">
+    <img src="../static/images/favicon.svg" alt="Logo" style="width:15%" />
+    <h1 class="text-2xl font-bold text-gray-800" style="width:85%;">
+      Simulateur Climat : Priorisez les Mesures pour Réduire Nos Émissions
+    </h1>
+  </div>
+  
+  <!-- Optional Nav or Button Section -->
+  <!-- <nav>
+    <ul class="flex space-x-4">
+      <li><a href="#" class="text-gray-700 hover:text-blue-600">Home</a></li>
+      <li><a href="#" class="text-gray-700 hover:text-blue-600">About</a></li>
+    </ul>
+  </nav> -->
+  </header>
+    <section class="max-w-3xl mx-auto px-4 py-6 text-gray-800">
+  <h2 class="text-xl font-semibold mb-4">À propos du simulateur</h2>
+  <p class="mb-4">
+    Ce simulateur a été conçu pour vous permettre de tester différents scénarios de réduction des émissions de gaz à effet de serre (GES) du laboratoire I3S et de voter pour les actions que vous jugez les plus pertinentes à mettre en place d'ici 2030. 
+    Il s'agit d'un outil simplement conçu pour accompagner la prise de décision collective.
+  </p>
+  <p class="mb-4">
+    Les mesures proposées peuvent être appliquées progressivement, en tenant compte des contraintes
+    scientifiques et techniques propres aux activités du laboratoire. Vous pouvez composer votre scénario,
+    visualiser son impact estimé sur les émissions, puis voter pour les options que vous jugez les plus
+    pertinentes.
+  </p>
+  <p class="mb-4 flex items-start gap-2">
+    <span class="text-yellow-500 text-xl">💡</span>
+    <span>
+      <strong>À noter :</strong> Une réduction automatique de 10 % des émissions est déjà intégrée, liée aux évolutions structurelles telles que la rénovation énergétique des bâtiments, l'amélioration de l'efficacité énergétique du matériel informatique, et l'électrification progressive du parc de véhicules. Ces tendances sont étayées par les <a class="text-gray-600 hover:text-blue-800" href="https://librairie.ademe.fr/index.php?controller=attachment&id_attachment=5709&preview" target="_blank">scénarios prospectifs publiés par l’ADEME</a> sur la décarbonation du secteur tertiaire et l'évolution des technologies numériques, qui prévoient une baisse significative des consommations énergétiques et des émissions d'ici 2030.
+    </span>
+  </p>
+</section>
     <div class="container">
       <div id="chart-container">
-        <h2>Réduction : <span id="impactPercent">0</span>%
-          <div class="tooltip-container">   
-           <span class="info-icon">&nbsp;&nbsp;🛈</span>    
-            <div class="tooltip-content"> 
-              <p>Par défaut, en raison de changements structurels <br> (par exemple sur le marché du matériel informatique, <br>l'amélioration énergétique des bâtiments, <br> l'augmentation du parc de véhicule électrique, etc.),<br> 10 % des émissions de gaz à effet de serre sont économisées.</p>    
-            </div>  
-          </div>
-         </h2>
+        <h2 class="text-xl font-semibold mb-4">Réduction : <span id="impactPercent">0</span>%
+        </h2>
         <canvas id="impactChart"></canvas>
       </div>
   <table id="selectionTable">
@@ -38,7 +67,7 @@
     <tbody>
       {% for row in rows %}
       <tr class="card">
-        <td class="card-title"><strong>{{ row.title |safe }}</strong></td>
+        <td class="card-title text-xl"><strong>{{ row.title |safe }}</strong></td>
         {% for cell in row.parts %}
         <td class="options" data-weight="{{ cell.weight }}">
           <label>
@@ -56,7 +85,13 @@
     </tbody>
   </table>
   </div>
-  <button onclick="resetSelection()">Reset</button>
+  <button onclick="resetSelection()" class="btn btn-error btn-sm flex items-center gap-2">
+  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+      d="M3 2v6h6M21 12a9 9 0 11-3.4-7M3 2l6 6" />
+  </svg>
+  reset
+</button>
 
   <script>
     const maxScore = {{ max_score }};

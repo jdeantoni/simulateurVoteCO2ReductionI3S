@@ -14,6 +14,8 @@ def addImageHtmlCode(imgFileName:str) -> str:
 def createTooltipContent(text:str, imgFileName:str=None) -> str:
     return f"<div class=\"tooltip-container\">    <span class=\"info-icon\">&nbsp;&nbsp;🛈</span>    <div class=\"tooltip-content\">      {addImageHtmlCode(imgFileName)}       <p>{text}</p>    </div>  </div>"
 
+def createLinkedTooltipContent(text:str, imgFileName:str=None) -> str:
+    return f"<div class=\"tooltip-container\">    <span class=\"info-icon\">&nbsp;&nbsp;🛈</span>    <div class=\"tooltip-content\">      <a href=\"{url_for('static', filename=f'images/{imgFileName}')}\" target=_blank>{addImageHtmlCode(imgFileName)}</a>       <p>{text}</p>    </div>  </div>"
 
 @app.route('/')
 def index():
@@ -30,7 +32,7 @@ def index():
         {"text": "repas bas carbone, 75% végétarien", "weight": 1.5, "checked":True},
         {"text": "repas bas carbone, 100% végétarien", "weight": 2},
     ]},
-     {"title": "Vie au laboratoire:<br> Déjeuner"+createTooltipContent("Impact moyen de différents types de repas (source ademe)" ,"impact_co2_dejeuner.png"), "parts": [
+     {"title": "Vie au laboratoire:<br> Déjeuner"+createLinkedTooltipContent("Impact moyen de différents types de repas (source ademe)" ,"impact_co2_dejeuner.png"), "parts": [
         {"text": "1 déjeuner par semaine < 1KCo2e", "weight": 1*1.76},
         {"text": "2 déjeuner par semaine < 1KCo2e", "weight": 2*1.76},
         {"text": "3 déjeuner par semaine < 1KCo2e", "weight": 3*1.76, "checked":True},
