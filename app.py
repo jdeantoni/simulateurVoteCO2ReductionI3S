@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 
 # Calcul du score maximal
-max_score = 100#sum(cell['weight'] for row in rows for cell in row['parts'])
+max_score:float = 100.0#sum(cell['weight'] for row in rows for cell in row['parts'])
 
 def addImageHtmlCode(imgFileName:str) -> str:
     if (imgFileName!=None):

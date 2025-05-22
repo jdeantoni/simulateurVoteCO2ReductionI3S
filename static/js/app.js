@@ -83,19 +83,19 @@ let impactChart = new Chart(chartCtx, {
 
 // Fonction pour mettre à jour impact et couleur
 function updateImpact() {
-    let total = 10; // by default, due to structural evolution, 10% of reduction
+    let total = 10.0; // by default, due to structural evolution, 10% of reduction
 
     checkboxes.forEach(checkbox => {
         const cell = checkbox.closest('td');
         if (checkbox.checked) {
-            total += parseInt(cell.dataset.weight);
+            total += parseFloat(cell.dataset.weight);
             cell.classList.add('selected');
         } else {
             cell.classList.remove('selected');
         }
     });
 
-    const percent = ((total / maxScore) * 100).toFixed(1);
+    const percent = ((total / maxScore) * 100.0).toFixed(1);
 
     impactPercentEl.textContent = percent;
 
