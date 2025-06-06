@@ -45,12 +45,22 @@
   </p>
   </section>
   </details>
-    <div class="container">
-      <div id="chart-container">
-        <h2 class="text-xl font-semibold mb-4">Réduction : <span id="impactPercent">0</span>%
-        </h2>
-        <canvas id="impactChart"></canvas>
-      </div>
+
+  <div class="container">
+    <div id="chart-container">
+      <h2 class="text-xl font-semibold mb-4">Réduction : <span id="impactPercent">0</span>%
+      </h2>
+      <canvas id="impactChart"></canvas>
+    </div>
+
+  <button onclick="resetSelection()" class="btn btn-error btn-sm flex items-center gap-2">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M3 2v6h6M21 12a9 9 0 11-3.4-7M3 2l6 6" />
+    </svg>
+    reset
+  </button>
+  
   <table id="selectionTable">
     <thead>
       <tr>
@@ -91,13 +101,6 @@
       </span>
     </p>
   </section>
-  <button onclick="resetSelection()" class="btn btn-error btn-sm flex items-center gap-2">
-  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-      d="M3 2v6h6M21 12a9 9 0 11-3.4-7M3 2l6 6" />
-  </svg>
-  reset
-</button>
 
   <script>
     const maxScore = {{ max_score }};
